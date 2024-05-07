@@ -31,9 +31,6 @@
 
     <div class="container">
        <h1> Welcome, {{ Auth::user()->name }}</h1>
-       <h2> apa ada yang bisa saya bantu?</h2>
-       <h3> Kami menyediakan layanan Vtuber livestreaming/nobar dengan
-         berbagai avatar menarik yang pastinya kalian nikmati.</h3>
     </div>
 </body>
 </html>
