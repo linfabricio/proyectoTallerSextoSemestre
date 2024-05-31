@@ -100,6 +100,20 @@
                             <input type="password" name="password" class="form-control" id="password" required>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Rol</label>
+                            <div>
+                                <input type="radio" id="rol1" name="rol" class="form-check-input"
+                                    value="1">
+                                <label for="rol1" class="form-check-label">Administrador</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="rol2" name="rol" class="form-check-input"
+                                    value="2">
+                                <label for="rol2" class="form-check-label">Alumno</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
                             <div class="d-grid">
                                 <button class="btn btn-primary">Registrar</button>
                             </div>

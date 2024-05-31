@@ -21,7 +21,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-
+        $user->rol = $request->rol;
         $user->save();
 
         back()->with('success', 'Register successfully');
@@ -41,7 +41,18 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credetials)) {
-            return redirect('/home')->with('success', 'Login Success');
+
+            $user = Auth::user();
+
+            switch ($user->rol) {
+                case 1:
+                    return redirect('/homeAdmin')->with('success', 'Login Success');
+                    break;
+
+                case 2:
+                    return redirect('/homeAlumno')->with('success', 'Login Success');
+                    break;
+            }
         }
 
         return back()->with('error', 'Error Email or Password');
