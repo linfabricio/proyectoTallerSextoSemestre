@@ -13,40 +13,31 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-                <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Cerrar sesion</button>
-                </form>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Mi proyecto</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/homeAdmin') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('users') }}">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('cuentas') }}">Cuentas</a>
+                </li>
+            </ul>
         </div>
+
+        <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit">Cerrar sesion</button>
+        </form>
     </nav>
 
     <div class="container">
         <h1> Bienvenido, {{ Auth::user()->name }}</h1>
-    </div>
-
-    <div class="form-row">
-        <a class="btn btn-success" href="{{ url('/users') }}">Administrar usuario</a>
-    </div>
-
-    <br>
-
-    <div class="form-row">
-        <a class="btn btn-success" href="{{ url('/cuentas') }}">Administrar cuentas de alumnos</a>
     </div>
 </body>
 
