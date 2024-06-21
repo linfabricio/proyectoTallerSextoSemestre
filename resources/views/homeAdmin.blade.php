@@ -20,12 +20,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/homeAdmin') }}">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('users') }}">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('cuentas') }}">Cuentas</a>
-                </li>
+                @if (Auth::user()->rol == 1)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('users') }}">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('cuentas') }}">Cuentas</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('alumno.pending_accounts') }}">Cuentas Pendientes</a>
+                    </li>
+                @endif
             </ul>
         </div>
 

@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/{id}/edit', [UserController::class, 'edit']);
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
+    Route::get('/alumno/cuentas-pendientes', [CuentasController::class, 'showPendingAccounts'])->name('alumno.pending_accounts');
+    Route::match(['get', 'post'], '/mostrar/{id?}', [CuentasController::class, 'mostrarFormularioPago'])->name('mostrarPago');
+    Route::match(['get', 'post'],'/realizar/{id?}', [CuentasController::class, 'realizarPago'])->name('realizarPago');
 
     Route::resource('cuentas', CuentasController::class);
 });

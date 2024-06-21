@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel 10 Custom Login and Registration</title>
+    <title>Proyecto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
@@ -25,18 +25,30 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
+                    @if (Auth::user()->rol == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('users') }}">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('cuentas') }}">Cuentas</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('alumno.pending_accounts') }}">Cuentas Pendientes</a>
+                        </li>
+                    @endif
                 </ul>
                 <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Cerrar sesion</button>
+                    <button class="btn btn-danger" type="submit">Cerrar sesión</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <h1> Bienvenido, {{ Auth::user()->name }}</h1>
+    <div class="container mt-4">
+        @yield('content')
     </div>
 </body>
 
